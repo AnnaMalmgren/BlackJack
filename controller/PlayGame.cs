@@ -19,22 +19,22 @@ namespace BlackJack.controller
                 a_view.DisplayGameOver(a_game.IsDealerWinner());
             }
 
-            int input = a_view.GetInput();
+            view.Event input = a_view.GetInput();
 
-            if (input == 'p')
+            if (input == view.Event.PlayGame)
             {
                 a_game.NewGame();
             }
-            else if (input == 'h')
+            else if (input == view.Event.Hit)
             {
                 a_game.Hit();
             }
-            else if (input == 's')
+            else if (input == view.Event.Stand)
             {
                 a_game.Stand();
             }
 
-            return input != 'q';
+            return input != view.Event.Quit;
         }
     }
 }
