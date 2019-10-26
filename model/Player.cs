@@ -8,11 +8,13 @@ namespace BlackJack.model
     class Player
     {
         private List<Card> m_hand = new List<Card>();
+        private List<IGetCardObserver> m_subscribers = new List<IGetCardObserver>();
 
         public void DealCard(Card a_card, bool showCard)
         {
             a_card.Show(showCard);
             m_hand.Add(a_card);
+            NotifySubscribers();
         }
 
         public IEnumerable<Card> GetHand()
@@ -58,6 +60,16 @@ namespace BlackJack.model
             }
 
             return score;
+        }
+
+        public void NotifySubscribers()
+        {
+            m_subscribers.ForEach(subscriber => subscriber.CardDealt());
+        }
+
+        public void AddSubscriber(IGetCardObserver a_subscriber)
+        {
+            m_subscribers.Add(a_subscriber);
         }
     }
 }
