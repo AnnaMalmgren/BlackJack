@@ -38,8 +38,7 @@ namespace BlackJack.model
         {
             if (m_deck != null && a_player.CalcScore() < g_maxScore && !IsGameOver())
             {
-                Card card = m_deck.GetCard();
-                a_player.DealCard(card, true);
+                a_player.DealCard(m_deck.GetCard());
                 return true;
             }
             return false;
@@ -49,18 +48,22 @@ namespace BlackJack.model
         {
             if (m_deck != null) 
             {
-                this.ShowHand();
-
-                while(m_hitRule.DoHit(this)) 
-                {
-                    Card card = m_deck.GetCard();
-                    DealCard(card, true);
-                }
+                GetDealerHand();
                 return true;
             }
             else
             {
                 return false;
+            }
+        }
+
+        private void GetDealerHand()
+        {
+            this.ShowHand();
+
+            while(m_hitRule.DoHit(this)) 
+            {
+                DealCard(m_deck.GetCard());
             }
         }
 

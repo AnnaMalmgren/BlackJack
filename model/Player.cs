@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BlackJack.model
 {
@@ -10,7 +8,7 @@ namespace BlackJack.model
         private List<Card> m_hand = new List<Card>();
         private List<IGetCardObserver> m_subscribers = new List<IGetCardObserver>();
 
-        public void DealCard(Card a_card, bool showCard)
+        public void DealCard(Card a_card, bool showCard = true)
         {
             a_card.Show(showCard);
             m_hand.Add(a_card);

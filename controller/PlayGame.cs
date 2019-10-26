@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace BlackJack.controller
 {
-    class PlayGame : BlackJack.model.IGetCardObserver
+    class PlayGame : model.IGetCardObserver
     {
         private model.Game m_game;
 
         private view.IView m_view;
+
+        private int m_sleepTime = 1000;
 
         public PlayGame(model.Game a_game, view.IView a_view)
         {
@@ -52,7 +50,7 @@ namespace BlackJack.controller
 
         public void CardDealt()
         {
-            System.Threading.Thread.Sleep(1000);
+            System.Threading.Thread.Sleep(m_sleepTime);
             ShowGameView();
         }
 
