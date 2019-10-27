@@ -7,7 +7,7 @@ namespace BlackJack.controller
 
         private view.IView m_view;
 
-        private int m_sleepTime = 1000;
+        private int g_sleepTime = 1000;
 
         public PlayGame(model.Game a_game, view.IView a_view)
         {
@@ -50,7 +50,7 @@ namespace BlackJack.controller
 
         public void CardDealt()
         {
-            System.Threading.Thread.Sleep(m_sleepTime);
+            System.Threading.Thread.Sleep(g_sleepTime);
             ShowGameView();
         }
 

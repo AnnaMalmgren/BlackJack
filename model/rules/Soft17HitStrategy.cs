@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BlackJack.model.rules
 {
@@ -12,7 +10,7 @@ namespace BlackJack.model.rules
         {
             List<Card> hand = a_dealer.GetHand().ToList();
             
-            if (a_dealer.CalcScore() == g_hitLimit)
+            if (a_dealer.GetSumCardValues() == g_hitLimit)
             {
                 return this.DoesHandContainAce(hand);
             }
