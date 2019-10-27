@@ -42,7 +42,8 @@ namespace BlackJack.controller
             return input != view.Event.Quit;
         }
 
-        private void ShowGameView() {
+        private void ShowGameView() 
+        {
             m_view.DisplayWelcomeMessage();
             m_view.DisplayDealerHand(m_game.GetDealerHand(), m_game.GetDealerScore());
             m_view.DisplayPlayerHand(m_game.GetPlayerHand(), m_game.GetPlayerScore());
