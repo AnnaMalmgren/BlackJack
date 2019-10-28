@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BlackJack.model.rules
 {
-    class RulesFactory
+    class AmericanRulesFactory : IAbstractRulesFactory
     {
         public IHitStrategy GetHitRule()
         {
@@ -14,7 +14,7 @@ namespace BlackJack.model.rules
 
         public IGetWinnerStrategy GetWinnerRule()
         {
-            return new DealerWinsOnEqualStrategy();
+            return new PlayerWinsOnEqualStrategy();
         }
 
         public INewGameStrategy GetNewGameRule()
