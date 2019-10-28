@@ -13,22 +13,12 @@ namespace BlackJack.model.rules
         {
             List<Card> hand = a_dealer.GetHand().ToList();
             int nrAces = CountAces(hand);
+            int score = a_dealer.GetSumCardValues();
 
-            if (nrAces > 0)
+            if (IsSoft17(score, nrAces))
             {
-                int score = a_dealer.GetSumCardValues();
-
-                for (int i = 1; i < nrAces; i++)
-                {
-                    score -= g_getLowAce;
-                }
-
-                if (score <= g_hitLimit)
-                {
-                    return true;
-                }
+                return true;
             }
-            
             return a_dealer.CalcScore() < g_hitLimit;
         }
 
@@ -39,6 +29,19 @@ namespace BlackJack.model.rules
                             .Select(card => card)
                             .Count();
             return nrOfAces;
+        }
+
+        private bool IsSoft17(int score, int nrAces) {
+            if (nrAces > 0)
+            {
+                for (int i = 1; i < nrAces; i++)
+                {
+                    score -= g_getLowAce;
+                }
+
+                return score == g_hitLimit;
+            }
+            return false;
         }
     }
 }
