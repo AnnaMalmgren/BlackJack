@@ -51,10 +51,8 @@ namespace BlackJack.model
                 GetDealerHand();
                 return true;
             }
-            else
-            {
-                return false;
-            }
+
+            return false;
         }
 
         private void GetDealerHand()

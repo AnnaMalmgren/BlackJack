@@ -22,24 +22,24 @@ namespace BlackJack.model.rules
             return a_dealer.CalcScore() < g_hitLimit;
         }
 
-        private int CountAces(List<Card> hand)
+        private int CountAces(List<Card> a_hand)
         {
-            int nrOfAces = hand
+            int nrOfAces = a_hand
                             .Where(card => card.GetValue() == Card.Value.Ace)
                             .Select(card => card)
                             .Count();
             return nrOfAces;
         }
 
-        private bool IsSoft17(int score, int nrAces) {
-            if (nrAces > 0)
+        private bool IsSoft17(int a_score, int a_nrAces) {
+            if (a_nrAces > 0)
             {
-                for (int i = 1; i < nrAces; i++)
+                for (int i = 1; i < a_nrAces; i++)
                 {
-                    score -= g_getLowAce;
+                    a_score -= g_getLowAce;
                 }
 
-                return score == g_hitLimit;
+                return a_score == g_hitLimit;
             }
             return false;
         }

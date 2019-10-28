@@ -7,7 +7,7 @@ namespace BlackJack.controller
 
         private view.IView m_view;
 
-        private int g_sleepTime = 1000;
+        private int g_sleepTime = 700;
 
         public PlayGame(model.Game a_game, view.IView a_view)
         {

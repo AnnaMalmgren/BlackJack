@@ -8,9 +8,9 @@ namespace BlackJack.model
         private List<Card> m_hand = new List<Card>();
         private List<IGetCardObserver> m_subscribers = new List<IGetCardObserver>();
 
-        public void DealCard(Card a_card, bool showCard = true)
+        public void DealCard(Card a_card, bool a_showCard = true)
         {
-            a_card.Show(showCard);
+            a_card.Show(a_showCard);
             m_hand.Add(a_card);
             NotifySubscribers();
         }
