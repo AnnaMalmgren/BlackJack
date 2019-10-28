@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace BlackJack.model.rules
 {
-    class AmericanRulesFactory : IAbstractRulesFactory
+    class AmericanBasicRulesFactory : IAbstractRulesFactory
     {
-        public IHitStrategy GetHitRule()
+       public IHitStrategy GetHitRule()
         {
-            return new Soft17HitStrategy();
+            return new BasicHitStrategy();
         }
 
         public IGetWinnerStrategy GetWinnerRule()
@@ -20,6 +15,11 @@ namespace BlackJack.model.rules
         public INewGameStrategy GetNewGameRule()
         {
             return new AmericanNewGameStrategy();
+        }
+
+        public void Accept(IRulesVisitor a_visitor)
+        {
+            a_visitor.VisitAmericanBasicHitRules(this);
         }
     }
 }
